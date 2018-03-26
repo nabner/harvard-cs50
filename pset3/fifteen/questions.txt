@@ -1,0 +1,4 @@
+0. The framework allows dimensions between 3x3 (DIM_MIN) and 9x9 (DIM_MAX).
+1. Array
+2. printf is called to greet the player with ""WELCOME TO GAME OF FIFTEEN"
+3. init, draw, move, won
