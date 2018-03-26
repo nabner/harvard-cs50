@@ -1,0 +1,44 @@
+1.  stdint.h is a library that should be stored in C's header file when
+the user wants to access commands that are housed in that library. 
+Specifically, in week 4's lecture we learned that stdint.h houses
+the command "typedef struct" whereby the user can define structures of
+data (i.e. variables that hold more than one piece of information).
+
+2.  The "uint8_t, uint32_t, int32_t, and uint16_t" information tells
+the computer how much memory is being used for each data type being
+defined in the struct. Per the comment in copy.bn, this information
+is already known to C (using different names).
+
+3.  BYTE is 1 byte. DWORD is 4 bytes. LONG is 4 bytes. WORD is 2 bytes.
+
+4.  In hexidecimal, the first two bytes of any BMP files should be "0x" 
+which mean nothing to the computer but signify to a human that it is a
+BMP file.
+
+5.  The difference between bfSize and biSize is the bfSize is the size,
+in bytes, of the bitmap file and biSize is the size, also in bytes,
+required by the structure.
+
+6.  If biHeight is negative, the bitmap should be read top to bottom,
+left to right. A bitmap with a negative height cannot be compressed.
+
+7.  biBitCount specifies the bitmap's bits per pixel (i.e. the BMP's 
+color depth).
+
+8.  If the location to which *inptr and *outpr are pointing do not 
+contain the file, fopen could return NULL. NULL may also be returned
+if there is not enough available memory to open the file.
+
+9.  The third argument of fread indicates how many units of information
+we want to acquire. In this circumstance, we want to aquire 1 struct 
+at a time, so we use 1 as the quantity.
+
+10. Line 65 assigns padding if bi.biWidth is 3 because the scanline
+in a BMP has to be evenly divisible by 4 (%4 == 0). 
+
+11. fseek can move your indicator forward or backward in a file to a
+specific location. 
+
+12. SEEK_CUR indicates the count of chars from the file's current
+position where the user wants to arrive using fseek (can be positive
+or negative).
