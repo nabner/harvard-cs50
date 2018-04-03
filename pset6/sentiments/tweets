@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import nltk
+
+import helpers
+from analyzer import Analyzer
+from termcolor import colored
+
+def main():
+    
+    # ensure proper usage
+    if len(sys.argv) != 2:
+        sys.exit("Usage: ./tweets @twitter_handle")
+      
+    # absolute paths to lists
+    positives = os.path.join(sys.path[0], "positive-words.txt")
+    negatives = os.path.join(sys.path[0], "negative-words.txt")
+    
+    # instantiate analyzer
+    analyzer = Analyzer(positives, negatives)
+    
+    # analyze tweets
+    twitter_handle = sys.argv[1].strip('@') 
+    
+    # get tweets
+    # in helpers.py get_user_timeline retrieves a users tweets 
+    # queries Twitter's API for user's most recent 50 tweets
+    tweets = helpers.get_user_timeline(twitter_handle, 50) 
+    
+    # if twitter_handle returns none, exit and return error
+    if tweets == None:
+        sys.exit("User is private or doesn't exist") 
+        
+    # if screen_name exist, analyze each tweet and output it
+    for tweet in tweets:
+        score = analyzer.analyze(tweet)
+        if score > 0.0:
+            print(colored("{} {}".format(score, tweet), "green"))
+        elif score < 0.0:
+            print(colored("{} {}".format(score, tweet), "red"))
+        else:
+            print(colored("{} {}".format(score, tweet), "yellow"))
+        
+if __name__ == "__main__":
+    main()
