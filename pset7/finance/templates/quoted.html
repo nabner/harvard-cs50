@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    Company: {{ quote.name }}
+    <br />
+    Stock Ticker: {{ quote.symbol }}
+    <br />
+    Value: {{quote.price}}
+    <br />
+    <br />
+    <button class="btn btn-default" type="submit" onclick="window.location.href='{{ url_for( 'buy' ) }}';">Proceed with the Purchase</button>
+    <br />
+    <p>   or   </p>
+    <button class="btn btn-default" type="submit" onclick="window.location.href='{{ url_for( 'quote' ) }}';">Get Another Quote</button>
+{% endblock %}

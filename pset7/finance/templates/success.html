@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction Success
+{% endblock %}
+
+{% block main %}
+
+    <p>Congratulations! You successfully {{ transaction_type }} {{ number_of_shares }} {{ share_word }}
+    of {{ symbol }} stock for {{ transaction_amount | usd}}.</p>
+
+{% endblock %}

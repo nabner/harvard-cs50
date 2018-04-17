@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction Success
+{% endblock %}
+
+{% block main %}
+
+    <p>Congratulations! You successfully added {{ transaction_amount | usd}} to your account.</p>
+    <br />
+    <p>You now have {{ cash | usd }} available in your account.</p>
+
+{% endblock %}
